@@ -15,9 +15,6 @@ jobs:
       matrix:
         browser: [chromium, firefox]
     steps:
-      - name: Get current timestamp
-        id: timestamp
-        run: echo "timestamp=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -31,6 +28,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: playwright-report-${{ github.run_id }}-${{ env.timestamp }}
+          name: playwright-report-${{ github.run_id }}-${{ github.run_number }}
           path: playwright-report/
           retention-days: 30
