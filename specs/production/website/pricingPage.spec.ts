@@ -1,6 +1,9 @@
 import { fixtures as test } from "../../../fixture";
 
 test.describe("Pricing page tests", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("https://www.kittl.com/pricing");
+  });
   test("Verify that switching between monthly and yearly options updates pricing accordingly", async ({
     pricingPage,
   }) => {

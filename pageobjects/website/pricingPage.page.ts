@@ -72,7 +72,6 @@ export default class PricingPage {
 
   // Switch the price plan from yearly to monthly
   async planToggle() {
-    await this.page.goto("https://www.kittl.com/pricing");
     await expect(this.yearlyProPrice).toBeVisible();
     await expect(this.yearlyExpertPrice).toBeVisible();
     await this.planToggleButton.click();
@@ -82,7 +81,6 @@ export default class PricingPage {
 
   // Create a new account
   async createAccount() {
-    await this.page.goto("https://www.kittl.com/pricing");
     await this.createAccountButton.click();
     await this.nameField.fill("John Player");
     await this.emailField.fill("test@test.com");
@@ -92,7 +90,6 @@ export default class PricingPage {
 
   // Assert mandatory fields
   async assertMandatoryFields() {
-    await this.page.goto("https://www.kittl.com/pricing");
     await this.createAccountButton.click();
     await this.subscribeButton.click();
     const actualText = await this.page
